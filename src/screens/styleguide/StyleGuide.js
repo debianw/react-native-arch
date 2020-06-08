@@ -1,12 +1,12 @@
 import React from "react";
 import { View, StatusBar } from "react-native";
 import { Input } from "react-native-elements";
-import Icon from "../../components/atoms/Icon";
-import Screen from "../../components/atoms/Screen";
-import Button from "../../components/atoms/AppButton";
-import AppTheme from "../../config/theme/theme";
-import Typography from "../../components/atoms/Typography";
-import useStyles from "../../hooks/useStyles";
+import Typography from "components/atoms/Typography";
+import Icon from "components/atoms/Icon";
+import Screen from "components/atoms/Screen";
+import Button from "components/atoms/AppButton";
+import AppTheme from "config/theme/theme";
+import useStyles from "hooks/useStyles";
 
 const Row = ({ children }) => {
   return <View style={{ margin: 8 }}>{children}</View>;
@@ -24,7 +24,7 @@ const StyleGuide = ({ navigation }) => {
 
       <Row>
         <Button
-          onPress={() => navigation.navigate('SignIn')}
+          onPress={() => navigation.navigate("SignIn")}
           buttonStyle={{ width: 50 }}
           icon={<Icon name="home" size={15} color="white" />}
         />
