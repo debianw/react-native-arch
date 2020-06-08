@@ -12,7 +12,7 @@ const carouselSource1 = require("./assets/group.png");
 const carouselSource2 = require("./assets/car-and-qr.png");
 const carouselSource3 = require("./assets/booking.png");
 
-const makeStyles = () =>
+const makeStyles = (theme) =>
   StyleSheet.create({
     logoSection: {
       marginTop: 25,
@@ -38,6 +38,7 @@ const makeStyles = () =>
 
     formFooterText: {
       textAlign: "center",
+      color: theme.colors.grey3,
     },
 
     formTitle: {
