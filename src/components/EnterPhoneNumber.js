@@ -13,31 +13,35 @@ const makeStyles = (theme) =>
       borderBottomWidth: 1,
       borderColor: theme.colors.grey6,
       marginRight: 10,
+      // justifyContent: "flex-end",
+    },
+    select: {
+      // paddingVertical: 8,
     },
     inputContainer: {
       flex: 1,
       borderBottomWidth: 1,
       borderColor: theme.colors.grey6,
-      justifyContent: "flex-end",
+      // justifyContent: "flex-end",
     },
     input: {
-      // flex: 1,
       color: theme.colors.white,
       fontSize: 16,
+      // paddingVertical: 8,
     },
   });
 
-const EnterPhoneNumber = () => {
+const EnterPhoneNumber = ({ containerStyle }) => {
   const { styles, theme } = useStyles(makeStyles);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, containerStyle]}>
       <View style={styles.selectContainer}>
-        <Select color={theme.colors.white} />
+        <Select color={theme.colors.white} containerStyle={styles.select} />
       </View>
 
       <View style={styles.inputContainer}>
-        <TextInput style={styles.input} />
+        <TextInput keyboardType="phone-pad" style={styles.input} />
       </View>
     </View>
   );

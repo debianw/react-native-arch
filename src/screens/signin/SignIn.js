@@ -1,9 +1,9 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
-import { Text } from "react-native-elements";
 import Screen from "components/atoms/Screen";
 import Button from "components/atoms/AppButton";
 import Carousel from "components/Carousel";
+import Typography from "components/atoms/Typography";
 import EnterPhoneNumber from "components/EnterPhoneNumber";
 import useStyles from "hooks/useStyles";
 
@@ -23,10 +23,29 @@ const makeStyles = () =>
       marginVertical: 25,
     },
 
-    formSection: {
-      borderColor: "green",
-      borderWidth: 1,
-      padding: 16,
+    formContainer: {
+      // flex: 1,
+      paddingHorizontal: 16,
+      // justifyContent: "space-between",
+    },
+
+    formDetails: {},
+
+    formFooterContainer: {
+      paddingVertical: 8,
+      marginVertical: 25,
+    },
+
+    formFooterText: {
+      textAlign: "center",
+    },
+
+    formTitle: {
+      alignSelf: "center",
+    },
+
+    enterPhoneContainer: {
+      marginVertical: 25,
     },
   });
 
@@ -63,14 +82,46 @@ const SignIn = () => {
         />
       </View>
 
-      <View style={styles.formSection}>
-        <Text> Enter Phone Number </Text>
+      <View style={styles.formContainer}>
+        <View style={styles.formDetails}>
+          <Typography
+            variant="subtitle2"
+            color="white"
+            typographyStyles={styles.formTitle}
+          >
+            Enter Phone Number
+          </Typography>
 
-        <View style={{ marginVertical: 10 }}>
-          <EnterPhoneNumber />
+          <EnterPhoneNumber containerStyle={styles.enterPhoneContainer} />
+
+          <Button disabled title="Enter Phone Number" />
         </View>
 
-        <Button disabled title="Enter Phone Number" />
+        <View style={styles.formFooterContainer}>
+          <Typography
+            typographyStyles={styles.formFooterText}
+            variant="body3"
+            color="white"
+          >
+            By entering your phone number, you agree to Envoy’s{" "}
+            <Typography
+              variant="body3"
+              color="primary1"
+              onPress={() => console.log("go to Term & Conditions")}
+            >
+              Terms & Conditions
+            </Typography>{" "}
+            and{" "}
+            <Typography
+              onPress={() => console.log("go to Privacy Policy")}
+              variant="body3"
+              color="primary1"
+            >
+              Privacy Policy
+            </Typography>
+            .
+          </Typography>
+        </View>
       </View>
     </Screen>
   );

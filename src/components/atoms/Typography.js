@@ -11,6 +11,9 @@ const styles = (theme) =>
     colorPrimary: {
       color: theme.colors.primary,
     },
+    colorPrimary1: {
+      color: theme.colors.primary1,
+    },
     colorSecondary: {
       color: theme.colors.secondary,
     },
@@ -33,6 +36,7 @@ const styles = (theme) =>
     },
     subtitle2: {
       fontSize: 16,
+      fontWeight: "bold",
     },
     subtitle3: {
       fontSize: 14,
@@ -42,6 +46,9 @@ const styles = (theme) =>
     },
     body2: {
       fontSize: 14,
+    },
+    body3: {
+      fontSize: 12,
     },
     button: {
       fontSize: 14,
@@ -56,7 +63,13 @@ const styles = (theme) =>
     },
   });
 
-const Typography = ({ children, color, variant, typographyStyles }) => {
+const Typography = ({
+  children,
+  color,
+  variant,
+  typographyStyles,
+  ...textProps
+}) => {
   const { styles: classes } = useStyles(styles);
 
   return (
@@ -67,6 +80,7 @@ const Typography = ({ children, color, variant, typographyStyles }) => {
         color && classes[`color${capitalize(color)}`],
         typographyStyles,
       ])}
+      {...textProps}
     >
       {children}
     </Text>

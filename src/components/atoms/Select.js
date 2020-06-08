@@ -8,9 +8,8 @@ const makeStyles = () =>
   StyleSheet.create({
     container: {
       flexDirection: "row",
-      alignItems: "center",
-      padding: 8,
-      justifyContent: "space-between",
+      // alignItems: "center",
+      // justifyContent: "center",
     },
     valueContainer: {
       marginRight: 5,

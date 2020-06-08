@@ -68,6 +68,7 @@ const Carousel = ({ items = [] }) => {
         style={{ width }}
         ref={scrollerRef}
         onScroll={onScroll}
+        scrollEventThrottle={16}
       >
         {items.map((item) => (
           <Panel key={item.id} style={[styles.panel, panelStyles]}>
