@@ -11,14 +11,16 @@ import ScanYourLicenseScreen, {
   ScreenOptions as ScanYourLicenseScreenOptions,
 } from "./screens/scan-license/ScanYourLicense";
 
-import StyleGuideScreen, { ScreenOptions as StyleGuideScreenOptions } from "./screens/styleguide/StyleGuide";
+import StyleGuideScreen, {
+  ScreenOptions as StyleGuideScreenOptions,
+} from "./screens/styleguide/StyleGuide";
 
 const Stack = createStackNavigator();
 
-const Routes = ({}) => {
+const Routes = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="StyleGuide">
+      <Stack.Navigator initialRouteName="SignIn">
         <Stack.Screen
           name="SignIn"
           component={SignInScreen}
@@ -36,7 +38,6 @@ const Routes = ({}) => {
           component={ScanYourLicenseScreen}
           options={ScanYourLicenseScreenOptions}
         />
-
 
         <Stack.Screen
           name="StyleGuide"

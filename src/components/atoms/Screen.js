@@ -1,16 +1,35 @@
 import React from "react";
-import { SafeAreaView, View, StyleSheet, ViewStyle } from "react-native";
+import { SafeAreaView, View, StatusBar } from "react-native";
+import useStyles from "hooks/useStyles";
 
-const styles = StyleSheet.create({
+const makeStyles = (theme) => ({
   container: {
     flex: 1,
-    backgroundColor: '#FFF',
-  }
-})
+  },
+  dark: {
+    backgroundColor: theme.colors.primary,
+  },
+  light: {
+    backgroundColor: theme.colors.white,
+  },
+});
 
-const Screen = ({ safe, children, style }) => {
+const Screen = ({ safe, children, style, dark = false }) => {
+  const { styles, theme } = useStyles(makeStyles);
   const Container = safe ? SafeAreaView : View;
-  return <Container style={[styles.container, style]}>{children}</Container>;
+  const backgroundStyles = dark ? styles.dark : styles.light;
+
+  return (
+    <>
+      <StatusBar
+        barStyle={dark ? "light-content" : "dark-content"}
+        backgroundColor={dark ? theme.colors.primary : theme.colors.white}
+      />
+      <Container style={[styles.container, backgroundStyles, style]}>
+        {children}
+      </Container>
+    </>
+  );
 };
 
 Screen.defaultProps = {
