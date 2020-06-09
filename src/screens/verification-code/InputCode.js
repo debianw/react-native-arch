@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { TextInput, StyleSheet } from "react-native";
 import useStyles from "hooks/useStyles";
 
@@ -17,9 +17,32 @@ const makeStyles = (theme) =>
   });
 
 const InputCode = ({ style, ...textProps }) => {
-  const { styles } = useStyles(makeStyles);
+  const [focusStyles, setFocusStyles] = useState({});
+  const { styles, theme } = useStyles(makeStyles);
 
-  return <TextInput style={[styles.input, style]} {...textProps} />;
+  const onFocus = () => {
+    setFocusStyles({
+      color: theme.colors.primary1,
+      borderColor: theme.colors.primary1,
+    });
+  };
+
+  const onBlur = () => {
+    setFocusStyles({
+      color: theme.colors.primary,
+      borderColor: theme.colors.grey3,
+    });
+  };
+
+  return (
+    <TextInput
+      keyboardType="number-pad"
+      onFocus={onFocus}
+      onBlur={onBlur}
+      style={[styles.input, style, focusStyles]}
+      {...textProps}
+    />
+  );
 };
 
 export default InputCode;

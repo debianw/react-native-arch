@@ -1,5 +1,12 @@
 import React, { useState, useCallback } from "react";
-import { View, Image, StyleSheet, InputText, Text } from "react-native";
+import {
+  View,
+  ScrollView,
+  Image,
+  StyleSheet,
+  InputText,
+  Text,
+} from "react-native";
 import Screen from "components/atoms/Screen";
 import Button from "components/atoms/AppButton";
 import Carousel from "components/Carousel";
@@ -64,7 +71,7 @@ const SignIn = ({ navigation }) => {
   );
 
   return (
-    <Screen dark avoidKeyboard>
+    <Screen dark>
       <View style={styles.logoSection}>
         <Image source={Logo} />
       </View>
