@@ -36,9 +36,12 @@ const Select = ({
   color,
   options = [],
   onChange = noop,
+  value,
 }) => {
   const [showOptions, setShowOptions] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(options[0]);
+  const [selectedOption, setSelectedOption] = useState(
+    options.find((option) => option.value === value)
+  );
   const { styles } = useStyles(makeStyles);
 
   const onSelect = (option) => {

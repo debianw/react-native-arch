@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import { View, Image, StyleSheet } from "react-native";
 import Screen from "components/atoms/Screen";
 import Button from "components/atoms/AppButton";
@@ -44,12 +44,23 @@ const makeStyles = (theme) =>
     },
 
     enterPhoneContainer: {
-      marginVertical: 25,
+      marginTop: 10,
+      marginBottom: 25,
     },
   });
 
 const SignIn = () => {
+  const [phoneNumber, setPhoneNumber] = useState();
   const { styles } = useStyles(makeStyles);
+
+  // @TODO Validate introduced phone number
+  const isPhoneValid = phoneNumber?.value?.length > 0;
+
+  // console.log("SignIn Phone =>>>> ", phoneNumber);
+  const onPhoneNumberChange = useCallback(
+    (option) => setPhoneNumber(option),
+    []
+  );
 
   return (
     <Screen dark>
@@ -91,9 +102,16 @@ const SignIn = () => {
             Enter Phone Number
           </Typography>
 
-          <EnterPhoneNumber containerStyle={styles.enterPhoneContainer} />
+          <EnterPhoneNumber
+            onChange={onPhoneNumberChange}
+            containerStyle={styles.enterPhoneContainer}
+          />
 
-          <Button disabled title="Enter Phone Number" />
+          <Button
+            disabled={!isPhoneValid}
+            color="secondary"
+            title="Enter Phone Number"
+          />
         </View>
 
         <View style={styles.formFooterContainer}>
