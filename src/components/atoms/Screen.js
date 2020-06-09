@@ -1,9 +1,17 @@
 import React from "react";
-import { SafeAreaView, View, StatusBar } from "react-native";
+import {
+  SafeAreaView,
+  View,
+  StatusBar,
+  KeyboardAvoidingView,
+} from "react-native";
 import useStyles from "hooks/useStyles";
 
 const makeStyles = (theme) => ({
   container: {
+    flex: 1,
+  },
+  innerContainer: {
     flex: 1,
   },
   dark: {
@@ -26,7 +34,13 @@ const Screen = ({ safe, children, style, dark = false }) => {
         backgroundColor={dark ? theme.colors.primary : theme.colors.white}
       />
       <Container style={[styles.container, backgroundStyles, style]}>
-        {children}
+        <KeyboardAvoidingView
+          behavior="position"
+          enabled
+          style={styles.innerContainer}
+        >
+          {children}
+        </KeyboardAvoidingView>
       </Container>
     </>
   );

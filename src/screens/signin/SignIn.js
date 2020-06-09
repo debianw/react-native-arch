@@ -63,7 +63,7 @@ const SignIn = () => {
   );
 
   return (
-    <Screen dark>
+    <Screen dark avoidKeyboard>
       <View style={styles.logoSection}>
         <Image source={Logo} />
       </View>
