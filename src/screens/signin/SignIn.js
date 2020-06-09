@@ -15,23 +15,23 @@ const carouselSource3 = require("./assets/booking.png");
 const makeStyles = (theme) =>
   StyleSheet.create({
     logoSection: {
-      marginTop: 25,
+      marginTop: theme.utils.spacing(3),
       alignItems: "center",
     },
 
     carouselSection: {
-      marginVertical: 25,
+      marginVertical: theme.utils.spacing(3),
     },
 
     formContainer: {
-      paddingHorizontal: 16,
+      paddingHorizontal: theme.utils.spacing(2),
     },
 
     formDetails: {},
 
     formFooterContainer: {
-      paddingVertical: 8,
-      marginVertical: 25,
+      paddingVertical: theme.utils.spacing(1),
+      marginVertical: theme.utils.spacing(3),
     },
 
     formFooterText: {
@@ -44,12 +44,12 @@ const makeStyles = (theme) =>
     },
 
     enterPhoneContainer: {
-      marginTop: 10,
-      marginBottom: 25,
+      marginTop: theme.utils.spacing(1),
+      marginBottom: theme.utils.spacing(3),
     },
   });
 
-const SignIn = () => {
+const SignIn = ({ navigation }) => {
   const [phoneNumber, setPhoneNumber] = useState();
   const { styles } = useStyles(makeStyles);
 
@@ -109,6 +109,7 @@ const SignIn = () => {
 
           <Button
             disabled={!isPhoneValid}
+            onPress={() => navigation.navigate("VerificationCode")}
             color="secondary"
             title="Enter Phone Number"
           />

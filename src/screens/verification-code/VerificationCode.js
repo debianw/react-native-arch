@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StatusBar } from "react-native";
+import { View } from "react-native";
 import AppTheme from "config/theme/theme";
 import Screen from "components/atoms/Screen";
 import Typography from "components/atoms/Typography";
@@ -18,19 +18,15 @@ const VerificationCode = ({ navigation }) => {
 
   return (
     <Screen>
-      <StatusBar barStyle="dark-content" backgroundColor={theme.colors.white} />
+      <Typography variant="title" color="primary">
+        We sent you a verification code{" "}
+      </Typography>
 
-      <View style={{ margin: 8, flex: 1, justifyContent: "space-between" }}>
-        <Typography variant="title" color="primary">
-          We sent you a verification code{" "}
-        </Typography>
-
-        <Button
-          color="secondary"
-          onPress={() => navigation.navigate("ScanYourLicense")}
-          title="Submit"
-        />
-      </View>
+      <Button
+        color="secondary"
+        onPress={() => navigation.navigate("ScanYourLicense")}
+        title="Submit"
+      />
     </Screen>
   );
 };
