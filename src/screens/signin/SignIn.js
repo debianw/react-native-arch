@@ -1,11 +1,12 @@
 import React, { useState, useCallback } from "react";
-import { View, Image, StyleSheet } from "react-native";
+import { View, Image, StyleSheet, InputText, Text } from "react-native";
 import Screen from "components/atoms/Screen";
 import Button from "components/atoms/AppButton";
 import Carousel from "components/Carousel";
 import Typography from "components/atoms/Typography";
 import EnterPhoneNumber from "components/EnterPhoneNumber";
 import useStyles from "hooks/useStyles";
+import { TextInput } from "react-native-gesture-handler";
 
 const Logo = require("../../../assets/logo.png");
 const carouselSource1 = require("./assets/group.png");

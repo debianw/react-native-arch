@@ -1,12 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  SafeAreaView,
-  View,
-  ViewPropTypes,
-  StatusBar,
-  KeyboardAvoidingView,
-} from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { SafeAreaView, View, ViewPropTypes, StatusBar } from "react-native";
 import useStyles from "hooks/useStyles";
 
 const makeStyles = (theme) => ({
@@ -24,28 +19,50 @@ const makeStyles = (theme) => ({
   },
 });
 
-const Screen = ({ safe, children, style, dark }) => {
+const Screen = ({
+  safe,
+  children,
+  containerStyle,
+  innerContainerStyle,
+  dark,
+}) => {
   const { styles, theme } = useStyles(makeStyles);
   const Container = safe ? SafeAreaView : View;
   const backgroundStyles = dark ? styles.dark : styles.light;
 
   return (
-    <>
+    <KeyboardAwareScrollView
+      style={[styles.container, backgroundStyles, containerStyle]}
+    >
       <StatusBar
         barStyle={dark ? "light-content" : "dark-content"}
         backgroundColor={dark ? theme.colors.primary : theme.colors.white}
       />
-      <Container style={[styles.container, backgroundStyles, style]}>
-        <KeyboardAvoidingView
-          behavior="position"
-          enabled
-          style={styles.innerContainer}
-        >
-          {children}
-        </KeyboardAvoidingView>
+      <Container
+        style={[styles.innerContainer, backgroundStyles, innerContainerStyle]}
+      >
+        {children}
       </Container>
-    </>
+    </KeyboardAwareScrollView>
   );
+
+  // return (
+  //   <>
+  //     <StatusBar
+  //       barStyle={dark ? "light-content" : "dark-content"}
+  //       backgroundColor={dark ? theme.colors.primary : theme.colors.white}
+  //     />
+  //     <Container style={[styles.container, backgroundStyles, style]}>
+  //       <KeyboardAvoidingView
+  //         behavior="position"
+  //         enabled
+  //         style={styles.innerContainer}
+  //       >
+  //         {children}
+  //       </KeyboardAvoidingView>
+  //     </Container>
+  //   </>
+  // );
 };
 
 Screen.propTypes = {

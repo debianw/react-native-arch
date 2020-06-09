@@ -1,15 +1,34 @@
 import React from "react";
-import { View } from "react-native";
+import { View, ScrollView } from "react-native";
 import AppTheme from "config/theme/theme";
 import Screen from "components/atoms/Screen";
 import Typography from "components/atoms/Typography";
 import useStyles from "hooks/useStyles";
 import Button from "components/atoms/AppButton";
 import Icon from "components/atoms/Icon";
+import InputCode from "./InputCode";
 
 const makeStyles = (theme) => ({
-  innerContent: {
-    backgroundColor: theme.colors.primary,
+  titleContainer: {
+    marginHorizontal: theme.utils.spacing(2),
+    marginBottom: theme.utils.spacing(2),
+  },
+  title: {
+    textAlign: "center",
+  },
+  verificationContainer: {
+    marginVertical: theme.utils.spacing(4),
+    alignItems: "center",
+  },
+  footerContainer: {
+    marginHorizontal: theme.utils.spacing(2),
+  },
+  codesContainer: {
+    flexDirection: "row",
+    marginVertical: theme.utils.spacing(2),
+  },
+  inputCode: {
+    marginRight: theme.utils.spacing(1),
   },
 });
 
@@ -17,16 +36,42 @@ const VerificationCode = ({ navigation }) => {
   const { styles, theme } = useStyles(makeStyles);
 
   return (
-    <Screen>
-      <Typography variant="title" color="primary">
-        We sent you a verification code{" "}
-      </Typography>
+    <Screen avoidKeyboard>
+      <ScrollView
+        style={{ borderWidth: 1, borderColor: "orange", height: "100%" }}
+      >
+        <View style={styles.titleContainer}>
+          <Typography
+            typographyStyles={styles.title}
+            variant="title"
+            color="primary"
+          >
+            We sent you a verification code
+          </Typography>
+        </View>
 
-      <Button
-        color="secondary"
-        onPress={() => navigation.navigate("ScanYourLicense")}
-        title="Submit"
-      />
+        <View style={styles.verificationContainer}>
+          <Typography variant="subtitle2" color="textSecondary">
+            Verification code
+          </Typography>
+
+          <View style={styles.codesContainer}>
+            <InputCode value="2" style={styles.inputCode} />
+            <InputCode value="4" style={styles.inputCode} />
+            <InputCode value="4" style={styles.inputCode} />
+            <InputCode value="" style={styles.inputCode} />
+          </View>
+        </View>
+
+        <View style={styles.footerContainer}>
+          <Button
+            color="secondary"
+            onPress={() => navigation.navigate("ScanYourLicense")}
+            title="Submit"
+            style={styles.submitButton}
+          />
+        </View>
+      </ScrollView>
     </Screen>
   );
 };
