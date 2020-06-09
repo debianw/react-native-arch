@@ -1,7 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   SafeAreaView,
   View,
+  ViewPropTypes,
   StatusBar,
   KeyboardAvoidingView,
 } from "react-native";
@@ -22,7 +24,7 @@ const makeStyles = (theme) => ({
   },
 });
 
-const Screen = ({ safe, children, style, dark = false }) => {
+const Screen = ({ safe, children, style, dark }) => {
   const { styles, theme } = useStyles(makeStyles);
   const Container = safe ? SafeAreaView : View;
   const backgroundStyles = dark ? styles.dark : styles.light;
@@ -46,8 +48,20 @@ const Screen = ({ safe, children, style, dark = false }) => {
   );
 };
 
+Screen.propTypes = {
+  safe: PropTypes.bool,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+  ]).isRequired,
+  dark: PropTypes.bool,
+  style: ViewPropTypes.style,
+};
+
 Screen.defaultProps = {
   safe: true,
+  dark: false,
+  style: {},
 };
 
 export default Screen;
