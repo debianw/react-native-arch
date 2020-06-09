@@ -24,9 +24,7 @@ const makeStyles = (theme) =>
     },
 
     formContainer: {
-      // flex: 1,
       paddingHorizontal: 16,
-      // justifyContent: "space-between",
     },
 
     formDetails: {},

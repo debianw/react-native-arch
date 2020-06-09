@@ -1,5 +1,11 @@
-import React from "react";
-import { View, StyleSheet, TouchableWithoutFeedback } from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  ScrollView,
+  StyleSheet,
+  TouchableWithoutFeedback,
+} from "react-native";
+import { Overlay, ListItem } from "react-native-elements";
 import Icon from "components/atoms/Icon";
 import Typography from "components/atoms/Typography";
 import useStyles from "hooks/useStyles";
@@ -8,8 +14,6 @@ const makeStyles = () =>
   StyleSheet.create({
     container: {
       flexDirection: "row",
-      // alignItems: "center",
-      // justifyContent: "center",
     },
     valueContainer: {
       marginRight: 5,
@@ -18,35 +22,70 @@ const makeStyles = () =>
       fontSize: 16,
     },
     iconContainer: {},
+    overlayContainer: {
+      width: 200,
+      maxHeight: 400,
+    },
   });
 
-const Select = ({ containerStyle, valueStyle, color }) => {
+const noop = () => {};
+
+const Select = ({
+  containerStyle,
+  valueStyle,
+  color,
+  options = [],
+  onChange = noop,
+}) => {
+  const [showOptions, setShowOptions] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(options[0]);
   const { styles } = useStyles(makeStyles);
 
-  const onPress = () => {
-    console.log("open selector");
+  const onSelect = (option) => {
+    setSelectedOption(option);
+    onChange(option);
+    setShowOptions(false);
   };
 
   return (
-    <TouchableWithoutFeedback onPress={onPress}>
-      <View style={[styles.container, containerStyle]}>
-        <View style={styles.valueContainer}>
-          <Typography
-            typographyStyles={[
-              styles.value,
-              valueStyle,
-              color ? { color } : {},
-            ]}
-          >
-            +1
-          </Typography>
-        </View>
+    <>
+      <TouchableWithoutFeedback onPress={() => setShowOptions(true)}>
+        <View style={[styles.container, containerStyle]}>
+          <View style={styles.valueContainer}>
+            <Typography
+              typographyStyles={[
+                styles.value,
+                valueStyle,
+                color ? { color } : {},
+              ]}
+            >
+              {selectedOption.value}
+            </Typography>
+          </View>
 
-        <View style={styles.iconContainer}>
-          <Icon name="chevron-down" size={24} color={color} />
+          <View style={styles.iconContainer}>
+            <Icon name="chevron-down" size={24} color={color} />
+          </View>
         </View>
-      </View>
-    </TouchableWithoutFeedback>
+      </TouchableWithoutFeedback>
+
+      <Overlay
+        isVisible={showOptions}
+        onBackdropPress={() => setShowOptions(false)}
+      >
+        <View style={styles.overlayContainer}>
+          <ScrollView>
+            {options.map((option) => (
+              <ListItem
+                onPress={() => onSelect(option)}
+                key={option.id}
+                title={option.label}
+              />
+            ))}
+          </ScrollView>
+        </View>
+      </Overlay>
+    </>
   );
 };
 
