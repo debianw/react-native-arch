@@ -7,9 +7,10 @@ const AppButton = ({ children, color, ...otherProps }) => {
 
   return (
     <Button
-      buttonStyle={
-        color && { backgroundColor: theme.colors?.[color || "primary"] }
-      }
+      buttonStyle={[
+        color && { backgroundColor: theme.colors?.[color || "primary"] },
+        { paddingVertical: theme.utils.spacing(2) },
+      ]}
       {...otherProps}
     />
   );

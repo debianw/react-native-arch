@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "envoy-mobile-app",
-    "slug": "envoy-mobile-app",
+    "name": "Envoy",
+    "slug": "Envoy",
     "platforms": [
       "ios",
       "android",

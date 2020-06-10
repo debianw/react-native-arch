@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { StyleSheet, Text } from "react-native";
 import useStyles from "hooks/useStyles";
 import capitalize from "utils/capitalize";
@@ -87,10 +88,41 @@ const Typography = ({
   );
 };
 
+Typography.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+    ),
+  ]).isRequired,
+  color: PropTypes.oneOf([
+    "primary",
+    "primary1",
+    "secondary",
+    "white",
+    "textPrimary",
+    "textSecondary",
+  ]),
+  variant: PropTypes.oneOf([
+    "title",
+    "subtitle1",
+    "subtitle2",
+    "subtitle3",
+    "body1",
+    "body2",
+    "body3",
+    "button",
+    "toolbar",
+    "caption",
+  ]),
+  // typographyStyles: TextPropTypes?.style,
+};
+
 Typography.defaultProps = {
   color: "textPrimary",
   variant: "body2",
-  typographyStyles: {},
+  // typographyStyles: {},
 };
 
 export default Typography;
