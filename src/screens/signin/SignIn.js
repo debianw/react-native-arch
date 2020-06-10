@@ -1,19 +1,12 @@
 import React, { useState, useCallback } from "react";
-import {
-  View,
-  ScrollView,
-  Image,
-  StyleSheet,
-  InputText,
-  Text,
-} from "react-native";
+import { View, Image, StyleSheet } from "react-native";
 import Screen from "components/atoms/Screen";
 import Button from "components/atoms/AppButton";
 import Carousel from "components/Carousel";
 import Typography from "components/atoms/Typography";
 import EnterPhoneNumber from "components/EnterPhoneNumber";
 import useStyles from "hooks/useStyles";
-import { TextInput } from "react-native-gesture-handler";
+import Instructions from "./Instructions";
 
 const Logo = require("../../../assets/logo.png");
 const carouselSource1 = require("./assets/group.png");
@@ -37,18 +30,15 @@ const makeStyles = (theme) =>
 
     formDetails: {},
 
-    formFooterContainer: {
-      paddingVertical: theme.utils.spacing(1),
-      marginVertical: theme.utils.spacing(3),
-    },
-
-    formFooterText: {
-      textAlign: "center",
-      color: theme.colors.grey3,
+    instructionsContainer: {
+      width: 300,
+      alignSelf: "center",
+      marginVertical: theme.utils.spacing(2),
     },
 
     formTitle: {
       alignSelf: "center",
+      marginBottom: theme.utils.spacing(2),
     },
 
     enterPhoneContainer: {
@@ -122,33 +112,9 @@ const SignIn = ({ navigation }) => {
             title="Enter Phone Number"
           />
         </View>
-
-        <View style={styles.formFooterContainer}>
-          <Typography
-            typographyStyles={styles.formFooterText}
-            variant="body3"
-            color="white"
-          >
-            By entering your phone number, you agree to Envoy’s{" "}
-            <Typography
-              variant="body3"
-              color="primary1"
-              onPress={() => console.log("go to Term & Conditions")}
-            >
-              Terms & Conditions
-            </Typography>{" "}
-            and{" "}
-            <Typography
-              onPress={() => console.log("go to Privacy Policy")}
-              variant="body3"
-              color="primary1"
-            >
-              Privacy Policy
-            </Typography>
-            .
-          </Typography>
-        </View>
       </View>
+
+      <Instructions style={styles.instructionsContainer} />
     </Screen>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { View } from "react-native";
 import AppTheme from "config/theme/theme";
 import Screen from "components/atoms/Screen";
@@ -6,7 +6,7 @@ import Typography from "components/atoms/Typography";
 import useStyles from "hooks/useStyles";
 import Button from "components/atoms/AppButton";
 import Icon from "components/atoms/Icon";
-import InputCode from "./InputCode";
+import EnterCode from "./EnterCode";
 
 const makeStyles = (theme) => ({
   container: {
@@ -19,32 +19,16 @@ const makeStyles = (theme) => ({
   title: {
     textAlign: "center",
   },
-  subtitle: {
-    fontWeight: "normal",
-    color: theme.colors.text.secondary,
-  },
   verificationContainer: {
     marginBottom: theme.utils.spacing(4),
-    alignItems: "center",
   },
   footerContainer: {
     marginHorizontal: theme.utils.spacing(2),
   },
-  codesContainer: {
-    flexDirection: "row",
-    marginVertical: theme.utils.spacing(2),
-  },
-  inputCode: {
-    marginRight: theme.utils.spacing(1),
-  },
 });
 
 const VerificationCode = ({ navigation }) => {
-  const [code1, setCode1] = useState();
-  const [code2, setCode2] = useState();
-  const [code3, setCode3] = useState();
-  const [code4, setCode4] = useState();
-  const { styles, theme } = useStyles(makeStyles);
+  const { styles } = useStyles(makeStyles);
 
   return (
     <Screen>
@@ -60,42 +44,7 @@ const VerificationCode = ({ navigation }) => {
         </View>
 
         <View style={styles.verificationContainer}>
-          <Typography variant="subtitle2" style={styles.subtitle}>
-            Verification code
-          </Typography>
-
-          <View style={styles.codesContainer}>
-            <InputCode
-              value={code1}
-              onChangeText={(text) => setCode1(text)}
-              style={styles.inputCode}
-            />
-            <InputCode
-              value={code2}
-              onChangeText={(text) => setCode2(text)}
-              style={styles.inputCode}
-            />
-            <InputCode
-              value={code3}
-              onChangeText={(text) => setCode3(text)}
-              style={styles.inputCode}
-            />
-            <InputCode
-              value={code4}
-              onChangeText={(text) => setCode4(text)}
-              style={styles.inputCode}
-            />
-          </View>
-
-          <Button
-            title="Resend Code"
-            type="clear"
-            titleStyle={{
-              color: theme.colors.primary1,
-              fontWeight: "bold",
-              fontSize: 14,
-            }}
-          />
+          <EnterCode />
         </View>
 
         <View style={styles.footerContainer}>
