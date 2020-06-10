@@ -37,6 +37,7 @@ const InputCode = ({ style, ...textProps }) => {
   return (
     <TextInput
       keyboardType="number-pad"
+      maxLength={1}
       onFocus={onFocus}
       onBlur={onBlur}
       style={[styles.input, style, focusStyles]}

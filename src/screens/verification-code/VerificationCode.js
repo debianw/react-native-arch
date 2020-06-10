@@ -14,7 +14,7 @@ const makeStyles = (theme) => ({
   },
   titleContainer: {
     marginHorizontal: theme.utils.spacing(2),
-    marginVertical: theme.utils.spacing(4),
+    marginVertical: theme.utils.spacing(8),
   },
   title: {
     textAlign: "center",
@@ -86,6 +86,16 @@ const VerificationCode = ({ navigation }) => {
               style={styles.inputCode}
             />
           </View>
+
+          <Button
+            title="Resend Code"
+            type="clear"
+            titleStyle={{
+              color: theme.colors.primary1,
+              fontWeight: "bold",
+              fontSize: 14,
+            }}
+          />
         </View>
 
         <View style={styles.footerContainer}>
