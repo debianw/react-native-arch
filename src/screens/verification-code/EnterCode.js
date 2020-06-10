@@ -29,7 +29,7 @@ const makeStyles = (theme) =>
     },
   });
 
-const EnterCode = ({ onChange }) => {
+const EnterCode = ({ onChange, onResend }) => {
   const [code1, setCode1] = useState();
   const [code2, setCode2] = useState();
   const [code3, setCode3] = useState();
@@ -75,6 +75,7 @@ const EnterCode = ({ onChange }) => {
       </View>
 
       <Button
+        onPress={onResend}
         title="Resend Code"
         type="clear"
         titleStyle={styles.resendButtonTitle}
@@ -85,10 +86,12 @@ const EnterCode = ({ onChange }) => {
 
 EnterCode.propTypes = {
   onChange: PropTypes.func,
+  onResend: PropTypes.func,
 };
 
 EnterCode.defaultProps = {
   onChange: () => {},
+  onResend: () => {},
 };
 
 export default EnterCode;
