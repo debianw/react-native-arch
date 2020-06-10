@@ -1,14 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import {
-  SafeAreaView,
-  View,
-  ViewPropTypes,
-  StatusBar,
-  KeyboardAvoidingView,
-  Platform,
-} from "react-native";
+import { SafeAreaView, View, ViewPropTypes, StatusBar } from "react-native";
 import useStyles from "hooks/useStyles";
 
 const makeStyles = (theme) => ({
@@ -16,10 +9,6 @@ const makeStyles = (theme) => ({
     flex: 1,
   },
   container: {
-    flex: 1,
-  },
-  innerContainer: {
-    justifyContent: "flex-end",
     flex: 1,
   },
   dark: {
@@ -35,25 +24,27 @@ const Screen = ({
   children,
   rootStyle,
   containerStyle,
-  innerContainerStyle,
   dark,
+  statusBarDark,
+  keyboardAware,
 }) => {
   const { styles, theme } = useStyles(makeStyles);
+  const RootContainer = keyboardAware ? KeyboardAwareScrollView : View;
   const Container = safe ? SafeAreaView : View;
   const backgroundStyles = dark ? styles.dark : styles.light;
 
   return (
-    <KeyboardAwareScrollView style={[styles.root, backgroundStyles, rootStyle]}>
+    <RootContainer style={[styles.root, backgroundStyles, rootStyle]}>
       <StatusBar
-        barStyle={dark ? "light-content" : "dark-content"}
-        backgroundColor={dark ? theme.colors.primary : theme.colors.white}
+        barStyle={dark || statusBarDark ? "light-content" : "dark-content"}
+        backgroundColor={
+          dark || statusBarDark ? theme.colors.primary : theme.colors.white
+        }
       />
       <Container style={[styles.container, backgroundStyles, containerStyle]}>
-        <View style={[styles.innerContainer, innerContainerStyle]}>
-          {children}
-        </View>
+        {children}
       </Container>
-    </KeyboardAwareScrollView>
+    </RootContainer>
   );
 };
 
@@ -66,7 +57,8 @@ Screen.propTypes = {
   dark: PropTypes.bool,
   rootStyle: ViewPropTypes.style,
   containerStyle: ViewPropTypes.style,
-  innerContainerStyle: ViewPropTypes.style,
+  statusBarDark: PropTypes.bool,
+  keyboardAware: PropTypes.bool,
 };
 
 Screen.defaultProps = {
@@ -74,7 +66,8 @@ Screen.defaultProps = {
   dark: false,
   rootStyle: {},
   containerStyle: {},
-  innerContainerStyle: {},
+  statusBarDark: false,
+  keyboardAware: false,
 };
 
 export default Screen;

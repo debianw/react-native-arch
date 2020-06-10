@@ -61,7 +61,7 @@ const SignIn = ({ navigation }) => {
   );
 
   return (
-    <Screen dark>
+    <Screen dark keyboardAware>
       <View style={styles.logoSection}>
         <Image source={Logo} />
       </View>
