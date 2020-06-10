@@ -12,6 +12,7 @@ export default {
   grey4: "#bdc6cf",
   grey5: "#e1e8ee",
   grey6: "#e6e6e6",
+  secondaryDarkGrey: "#9f9f9f",
   greyOutline: "#bbb",
   searchBg: "#303337",
   success: "#52c41a",

@@ -8,6 +8,7 @@ import {
   PanResponder,
 } from "react-native";
 import useStyles from "hooks/useStyles";
+import PullDownTab from "components/atoms/PullDownTab";
 
 const makeStyles = (theme) =>
   StyleSheet.create({
@@ -17,8 +18,7 @@ const makeStyles = (theme) =>
       justifyContent: "flex-end",
     },
     deck: {
-      backgroundColor: "#999999",
-      // paddingTop: 12,
+      backgroundColor: theme.colors.white,
       height: 20,
       borderTopRightRadius: 12,
       borderTopLeftRadius: 12,
@@ -33,7 +33,7 @@ const BottomSheet = ({ isOpen, children, onDismiss }) => {
   const panY = new Animated.Value(screenHeight);
   const resetPositionAnimation = Animated.timing(panY, {
     toValue: 0,
-    duration: 500,
+    duration: 400,
   });
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const BottomSheet = ({ isOpen, children, onDismiss }) => {
 
   const closeAnimation = Animated.timing(panY, {
     toValue: screenHeight,
-    duration: 500,
+    duration: 400,
   });
 
   const onClose = () => {
@@ -80,11 +80,11 @@ const BottomSheet = ({ isOpen, children, onDismiss }) => {
         <Animated.View
           {...panResponders.panHandlers}
           style={[styles.deck, { top }]}
-        />
-
-        <Animated.View style={[{ top, backgroundColor: "orange" }]}>
-          {children}
+        >
+          <PullDownTab />
         </Animated.View>
+
+        <Animated.View style={[{ top }]}>{children}</Animated.View>
       </View>
     </Modal>
   );
