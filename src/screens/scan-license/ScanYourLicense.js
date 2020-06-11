@@ -27,9 +27,9 @@ const ScanYourLicense = ({ navigation }) => {
       </Center>
 
       <BottomSheet fullscreen isOpen={open} onDismiss={() => setOpen(false)}>
-        <ScrollView>
+        <View>
           <Text> Content ... </Text>
-        </ScrollView>
+        </View>
       </BottomSheet>
     </Screen>
   );
