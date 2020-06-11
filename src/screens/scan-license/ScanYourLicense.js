@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ScrollView, View, Text } from "react-native";
+import { View, ScrollView, Text } from "react-native";
 import Center from "components/atoms/Center";
 import Screen from "components/atoms/Screen";
 import BottomSheet from "components/atoms/BottomSheet";
@@ -26,10 +26,8 @@ const ScanYourLicense = ({ navigation }) => {
         <AppButton title="Open" onPress={() => setOpen(true)} />
       </Center>
 
-      <BottomSheet isOpen={open} onDismiss={() => setOpen(false)}>
-        <ScrollView
-          style={{ height: "90%", backgroundColor: theme.colors.white }}
-        >
+      <BottomSheet fullscreen isOpen={open} onDismiss={() => setOpen(false)}>
+        <ScrollView>
           <Text> Content ... </Text>
         </ScrollView>
       </BottomSheet>

@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { useSafeArea } from "react-native-safe-area-context";
+import PropTypes from "prop-types";
 import {
   View,
   Modal,
@@ -10,6 +12,8 @@ import {
 import useStyles from "hooks/useStyles";
 import PullDownTab from "components/atoms/PullDownTab";
 
+const DECK_HEIGHT = 25;
+
 const makeStyles = (theme) =>
   StyleSheet.create({
     overlay: {
@@ -19,21 +23,23 @@ const makeStyles = (theme) =>
     },
     deck: {
       backgroundColor: theme.colors.white,
-      height: 20,
+      height: DECK_HEIGHT,
       borderTopRightRadius: 12,
       borderTopLeftRadius: 12,
     },
   });
 
 const screenHeight = Dimensions.get("screen").height;
+const windowHeight = Dimensions.get("window").height;
 
-const BottomSheet = ({ isOpen, children, onDismiss }) => {
-  const { styles } = useStyles(makeStyles);
+const BottomSheet = ({ fullscreen, height, isOpen, children, onDismiss }) => {
+  const insets = useSafeArea();
+  const { styles, theme } = useStyles(makeStyles);
 
   const panY = new Animated.Value(screenHeight);
   const resetPositionAnimation = Animated.timing(panY, {
     toValue: 0,
-    duration: 400,
+    duration: 300,
   });
 
   useEffect(() => {
@@ -44,7 +50,7 @@ const BottomSheet = ({ isOpen, children, onDismiss }) => {
 
   const closeAnimation = Animated.timing(panY, {
     toValue: screenHeight,
-    duration: 400,
+    duration: 300,
   });
 
   const onClose = () => {
@@ -84,10 +90,36 @@ const BottomSheet = ({ isOpen, children, onDismiss }) => {
           <PullDownTab />
         </Animated.View>
 
-        <Animated.View style={[{ top }]}>{children}</Animated.View>
+        <Animated.View style={[{ top }]}>
+          <View
+            style={{
+              height: fullscreen
+                ? windowHeight - DECK_HEIGHT - insets.top
+                : height,
+              backgroundColor: theme.colors.white,
+            }}
+          >
+            {children}
+          </View>
+        </Animated.View>
       </View>
     </Modal>
   );
+};
+
+BottomSheet.propTypes = {
+  fullscreen: PropTypes.bool,
+  height: PropTypes.number,
+  children: PropTypes.element.isRequired,
+  isOpen: PropTypes.bool,
+  onDismiss: PropTypes.func,
+};
+
+BottomSheet.defaultProps = {
+  fullscreen: false,
+  height: 400,
+  isOpen: false,
+  onDismiss: () => {},
 };
 
 export default BottomSheet;
