@@ -7,7 +7,7 @@ import useStyles from "hooks/useStyles";
 const makeStyles = (theme) =>
   StyleSheet.create({
     container: {
-      minWidth: 300,
+      width: 300,
       alignItems: "center",
       padding: theme.utils.spacing(2),
     },
