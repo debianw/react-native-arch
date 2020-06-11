@@ -7,7 +7,7 @@ import capitalize from "utils/capitalize";
 const styles = (theme) =>
   StyleSheet.create({
     root: {
-      color: theme.colors.secondary,
+      color: theme.colors.primary,
     },
     colorPrimary: {
       color: theme.colors.primary,
@@ -26,6 +26,9 @@ const styles = (theme) =>
     },
     colorTextSecondary: {
       color: theme.colors.text.secondary,
+    },
+    colorTextSecondary1: {
+      color: theme.colors.text.secondary1,
     },
     title: {
       fontSize: 28,
@@ -59,6 +62,10 @@ const styles = (theme) =>
       fontSize: 20,
     },
     caption: {
+      fontSize: 12,
+      textTransform: "uppercase",
+    },
+    label: {
       fontSize: 12,
       textTransform: "uppercase",
     },
@@ -103,6 +110,7 @@ Typography.propTypes = {
     "white",
     "textPrimary",
     "textSecondary",
+    "textSecondary1",
   ]),
   variant: PropTypes.oneOf([
     "title",
@@ -115,6 +123,7 @@ Typography.propTypes = {
     "button",
     "toolbar",
     "caption",
+    "label",
   ]),
   // typographyStyles: TextPropTypes?.style,
 };
