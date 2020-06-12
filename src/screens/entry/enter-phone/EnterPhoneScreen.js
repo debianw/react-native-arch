@@ -4,11 +4,11 @@ import Screen from "components/atoms/Screen";
 import Button from "components/atoms/AppButton";
 import Carousel from "components/Carousel";
 import Typography from "components/atoms/Typography";
-import EnterPhoneNumber from "components/EnterPhoneNumber";
 import useStyles from "hooks/useStyles";
+import InputPhone from "./InputPhone";
 import Instructions from "./Instructions";
 
-const Logo = require("../../../assets/logo.png");
+const Logo = require("../../../../assets/logo.png");
 const carouselSource1 = require("./assets/group.png");
 const carouselSource2 = require("./assets/car-and-qr.png");
 const carouselSource3 = require("./assets/booking.png");
@@ -47,7 +47,7 @@ const makeStyles = (theme) =>
     },
   });
 
-const SignIn = ({ navigation }) => {
+const EnterPhoneScreen = ({ navigation }) => {
   const [phoneNumber, setPhoneNumber] = useState();
   const { styles } = useStyles(makeStyles);
 
@@ -100,7 +100,7 @@ const SignIn = ({ navigation }) => {
             Enter Phone Number
           </Typography>
 
-          <EnterPhoneNumber
+          <InputPhone
             onChange={onPhoneNumberChange}
             containerStyle={styles.enterPhoneContainer}
           />
@@ -123,4 +123,4 @@ export const ScreenOptions = {
   headerShown: false,
 };
 
-export default SignIn;
+export default EnterPhoneScreen;

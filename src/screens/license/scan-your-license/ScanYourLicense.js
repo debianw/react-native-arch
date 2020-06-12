@@ -11,7 +11,7 @@ import CheckBox from "components/atoms/CheckBox";
 import Button from "components/atoms/AppButton";
 import AppTheme from "config/theme/theme";
 
-const CardIcon = require("../../../assets/cardIcon.png");
+const CardIcon = require("../../../../assets/cardIcon.png");
 
 const makeStyles = (theme) =>
   StyleSheet.create({
