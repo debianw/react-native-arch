@@ -1,17 +1,15 @@
 import React from "react";
-import { View, Text } from "react-native";
 import AppTheme from "config/theme/theme";
 import Typography from "components/atoms/Typography";
 import Icon from "components/atoms/Icon";
 import Screen from "components/atoms/Screen";
 import HeaderCommunityBanner from "components/community/HeaderCommunityBanner";
+import TurnOnLocationServiceOverlay from "components/TurnOnLocationServiceOverlay";
 
 const FindYourCommunityScreen = () => {
   return (
     <Screen statusBarDark>
-      <View>
-        <Text> Find your community </Text>
-      </View>
+      <TurnOnLocationServiceOverlay />
     </Screen>
   );
 };

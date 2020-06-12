@@ -8,7 +8,7 @@ const makeStyles = () =>
   StyleSheet.create({
     image: {
       width: "100%",
-      opacity: 0.1,
+      opacity: 0.2,
     },
   });
 
