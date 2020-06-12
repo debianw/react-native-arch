@@ -24,24 +24,9 @@ export default {
   text: {
     primary: "rgba(0, 0, 0, 0.87)",
     secondary: "rgba(0, 0, 0, 0.54)",
+    secondary1: "#9f9f9f",
     disabled: "rgba(0, 0, 0, 0.38)",
     hint: "rgba(0, 0, 0, 0.38)",
     white: "#FFFFFF",
   },
-  // platform: {
-  //   ios: {
-  //     primary: '#007aff',
-  //     secondary: '#5856d6',
-  //     success: '#4cd964',
-  //     error: '#ff3b30',
-  //     warning: '#ffcc00',
-  //   },
-  //   android: {
-  //     primary: '#2196f3',
-  //     secondary: '#9C27B0',
-  //     success: '#4caf50',
-  //     error: '#f44336',
-  //     warning: '#ffeb3b',
-  //   },
-  // },
 };
