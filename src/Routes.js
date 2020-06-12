@@ -14,10 +14,6 @@ import FindYourCommunityScreen, {
   ScreenOptions as FindYourCommunityScreenOptions,
 } from "screens/community/find-your-community/FindYourCommunityScreen";
 
-import StyleGuideScreen, {
-  ScreenOptions as StyleGuideScreenOptions,
-} from "./screens/styleguide/StyleGuide";
-
 const Stack = createStackNavigator();
 
 const Routes = () => {
@@ -34,12 +30,6 @@ const Routes = () => {
           name="VerificationCode"
           component={VerificationCodeScreen}
           options={VerificationCodeScreenOptions}
-        />
-
-        <Stack.Screen
-          name="StyleGuide"
-          component={StyleGuideScreen}
-          options={StyleGuideScreenOptions}
         />
 
         <Stack.Screen

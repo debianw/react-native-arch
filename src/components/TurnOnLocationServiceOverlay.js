@@ -28,6 +28,9 @@ const makeStyles = (theme) =>
     turnOnButton: {
       marginBottom: theme.utils.spacing(1),
     },
+    cancelButtonTitle: {
+      color: theme.colors.secondaryDarkGrey,
+    },
   });
 
 const TurnOnLocationServiceOverlay = () => {
@@ -58,7 +61,11 @@ const TurnOnLocationServiceOverlay = () => {
               style={styles.turnOnButton}
             />
 
-            <Button title="Not Now" type="clear" />
+            <Button
+              titleStyle={styles.cancelButtonTitle}
+              title="Not Now"
+              type="clear"
+            />
           </View>
         </View>
       </>
