@@ -39,7 +39,7 @@ const makeStyles = (theme) =>
 
 const noop = () => {};
 
-const EnterPhoneNumber = ({ containerStyle, onChange = noop }) => {
+const InputPhone = ({ containerStyle, onChange = noop }) => {
   const [value, setValue] = useState("");
   const [areaCode, setAreaCode] = useState(defaultAreaCode);
   const { styles, theme } = useStyles(makeStyles);
@@ -89,4 +89,4 @@ const EnterPhoneNumber = ({ containerStyle, onChange = noop }) => {
   );
 };
 
-export default EnterPhoneNumber;
+export default InputPhone;

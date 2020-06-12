@@ -28,7 +28,7 @@ const makeStyles = (theme) => ({
   },
 });
 
-const VerificationCode = ({ navigation }) => {
+const VerificationCodeScreen = ({ navigation }) => {
   const [loadingIndicator, setLoadingIndicator] = useState({
     show: false,
     message: "",
@@ -103,4 +103,4 @@ export const ScreenOptions = {
   headerTitle: () => null,
 };
 
-export default VerificationCode;
+export default VerificationCodeScreen;
