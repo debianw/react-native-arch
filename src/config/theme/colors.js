@@ -13,6 +13,7 @@ export default {
   grey5: "#e1e8ee",
   grey6: "#e6e6e6",
   secondaryDarkGrey: "#9f9f9f",
+  secondaryLightGrey: "#D8D8D8",
   greyOutline: "#bbb",
   searchBg: "#303337",
   success: "#52c41a",
@@ -22,7 +23,7 @@ export default {
   // Darker color if hairlineWidth is not thin enough
   divider: StyleSheet.hairlineWidth < 1 ? "#bcbbc1" : "rgba(0, 0, 0, 0.12)",
   text: {
-    primary: "rgba(0, 0, 0, 0.87)",
+    primary: "#232323",
     secondary: "rgba(0, 0, 0, 0.54)",
     secondary1: "#9f9f9f",
     disabled: "rgba(0, 0, 0, 0.38)",

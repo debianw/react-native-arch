@@ -1,14 +1,43 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, View } from "react-native";
 import AppTheme from "config/theme/theme";
 import Typography from "components/atoms/Typography";
 import Icon from "components/atoms/Icon";
+import Screen from "components/atoms/Screen";
+import HeaderCommunityBanner from "components/community/HeaderCommunityBanner";
+import TurnOnLocationServiceOverlay from "components/community/TurnOnLocationServiceOverlay";
+import SearchInput from "components/atoms/SearchFakeInput";
+import useStyles from "hooks/useStyles";
 
-const FindYourCommunityScreen = () => {
+const makeStyles = (theme) =>
+  StyleSheet.create({
+    container: {
+      padding: theme.utils.spacing(2),
+    },
+  });
+
+const FindYourCommunityScreen = ({ navigation }) => {
+  const { styles } = useStyles(makeStyles);
+  const [turnOnLocationService, setTurnOnLocationService] = useState(true);
+
+  const goToSearchCommunity = () => {
+    navigation.navigate("SearchCommunity");
+  };
+
   return (
-    <View>
-      <Text> Find your community </Text>
-    </View>
+    <Screen statusBarDark open={turnOnLocationService}>
+      <View style={styles.container}>
+        <SearchInput
+          onPress={goToSearchCommunity}
+          placeholder="Search to add property"
+        />
+      </View>
+
+      <TurnOnLocationServiceOverlay
+        open={turnOnLocationService}
+        close={() => setTurnOnLocationService(false)}
+      />
+    </Screen>
   );
 };
 
@@ -16,8 +45,15 @@ export const ScreenOptions = {
   headerBackImage: () => (
     <Icon name="chevron-left" size={32} color={AppTheme.colors.white} />
   ),
+  headerLeftContainerStyle: {
+    justifyContent: "flex-start",
+    paddingTop: AppTheme.utils.spacing(1),
+  },
   headerBackTitleVisible: false,
-  headerStyle: { backgroundColor: AppTheme.colors.primary },
+  headerStyle: {
+    height: 136,
+  },
+  headerBackground: () => <HeaderCommunityBanner />,
   headerTitle: () => (
     <Typography
       variant="toolbar"

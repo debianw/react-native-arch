@@ -46,7 +46,8 @@ const makeStyles = (theme) =>
     },
   });
 
-const ScanYourLicense = () => {
+const ScanYourLicense = ({ navigation }) => {
+  const [agreed, setAgreed] = useState(false);
   const [openRegionSelector, setOpenRegionSelector] = useState(false);
   const { styles } = useStyles(makeStyles);
 
@@ -73,7 +74,7 @@ const ScanYourLicense = () => {
       <View style={styles.footerContainer}>
         <View style={styles.agreement}>
           <View style={styles.agreementCheckContainer}>
-            <CheckBox />
+            <CheckBox onChange={setAgreed} />
           </View>
           <View style={styles.agreementDetailsContainer}>
             <Typography variant="body3" color="textSecondary1">
@@ -90,7 +91,12 @@ const ScanYourLicense = () => {
             </Typography>
           </View>
         </View>
-        <Button disabled color="secondary" title="Scan License" />
+        <Button
+          onPress={() => navigation.navigate("FindYourCommunity")}
+          disabled={!agreed}
+          color="secondary"
+          title="Scan License"
+        />
       </View>
 
       <BottomSheet
