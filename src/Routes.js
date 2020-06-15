@@ -13,13 +13,16 @@ import ScanYourLicenseScreen, {
 import FindYourCommunityScreen, {
   ScreenOptions as FindYourCommunityScreenOptions,
 } from "screens/community/find-your-community/FindYourCommunityScreen";
+import SearchCommunityScreen, {
+  ScreenOptions as SearchCommunityScreenOptions,
+} from "screens/community/search-community/SearchCommunityScreen";
 
 const Stack = createStackNavigator();
 
 const Routes = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="FindYourCommunity">
+      <Stack.Navigator initialRouteName="SearchCommunity">
         <Stack.Screen
           name="EnterPhone"
           component={EnterPhoneScreen}
@@ -42,6 +45,12 @@ const Routes = () => {
           name="FindYourCommunity"
           component={FindYourCommunityScreen}
           options={FindYourCommunityScreenOptions}
+        />
+
+        <Stack.Screen
+          name="SearchCommunity"
+          component={SearchCommunityScreen}
+          options={SearchCommunityScreenOptions}
         />
       </Stack.Navigator>
     </NavigationContainer>

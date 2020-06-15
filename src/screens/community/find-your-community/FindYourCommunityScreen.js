@@ -16,18 +16,21 @@ const makeStyles = (theme) =>
     },
   });
 
-const FindYourCommunityScreen = () => {
+const FindYourCommunityScreen = ({ navigation }) => {
   const { styles } = useStyles(makeStyles);
-  const [turnOnLocationService, setTurnOnLocationService] = useState(false);
+  const [turnOnLocationService, setTurnOnLocationService] = useState(true);
 
-  const onPress = () => {
-    console.log("go to search community");
+  const goToSearchCommunity = () => {
+    navigation.navigate("SearchCommunity");
   };
 
   return (
     <Screen statusBarDark open={turnOnLocationService}>
       <View style={styles.container}>
-        <SearchInput onPress={onPress} placeholder="Search to add property" />
+        <SearchInput
+          onPress={goToSearchCommunity}
+          placeholder="Search to add property"
+        />
       </View>
 
       <TurnOnLocationServiceOverlay
