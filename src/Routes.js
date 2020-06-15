@@ -19,7 +19,7 @@ const Stack = createStackNavigator();
 const Routes = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="EnterPhone">
+      <Stack.Navigator initialRouteName="FindYourCommunity">
         <Stack.Screen
           name="EnterPhone"
           component={EnterPhoneScreen}

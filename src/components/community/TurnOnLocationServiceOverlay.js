@@ -5,7 +5,7 @@ import Typography from "components/atoms/Typography";
 import Button from "components/atoms/AppButton";
 import useStyles from "hooks/useStyles";
 
-const BannerImage = require("../../assets/community/banner.png");
+const BannerImage = require("../../../assets/community/banner.png");
 
 const makeStyles = (theme) =>
   StyleSheet.create({
@@ -25,7 +25,7 @@ const makeStyles = (theme) =>
       textAlign: "center",
       marginBottom: theme.utils.spacing(2),
     },
-    turnOnButton: {
+    turnOnButtonContainer: {
       marginBottom: theme.utils.spacing(1),
     },
     cancelButtonTitle: {
@@ -33,11 +33,11 @@ const makeStyles = (theme) =>
     },
   });
 
-const TurnOnLocationServiceOverlay = () => {
+const TurnOnLocationServiceOverlay = ({ open, close }) => {
   const { styles } = useStyles(makeStyles);
 
   return (
-    <Overlay isVisible overlayStyle={styles.overlay}>
+    <Overlay isVisible={open} overlayStyle={styles.overlay}>
       <>
         <Image source={BannerImage} />
 
@@ -58,10 +58,11 @@ const TurnOnLocationServiceOverlay = () => {
             <Button
               title="Turn on Location Services"
               color="secondary"
-              style={styles.turnOnButton}
+              containerStyle={styles.turnOnButtonContainer}
             />
 
             <Button
+              onPress={close}
               titleStyle={styles.cancelButtonTitle}
               title="Not Now"
               type="clear"

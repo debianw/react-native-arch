@@ -13,6 +13,7 @@ export default {
   grey5: "#e1e8ee",
   grey6: "#e6e6e6",
   secondaryDarkGrey: "#9f9f9f",
+  secondaryLightGrey: "#D8D8D8",
   greyOutline: "#bbb",
   searchBg: "#303337",
   success: "#52c41a",

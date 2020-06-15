@@ -1,15 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
+import { StyleSheet, View } from "react-native";
 import AppTheme from "config/theme/theme";
 import Typography from "components/atoms/Typography";
 import Icon from "components/atoms/Icon";
 import Screen from "components/atoms/Screen";
 import HeaderCommunityBanner from "components/community/HeaderCommunityBanner";
-import TurnOnLocationServiceOverlay from "components/TurnOnLocationServiceOverlay";
+import TurnOnLocationServiceOverlay from "components/community/TurnOnLocationServiceOverlay";
+import SearchInput from "components/atoms/SearchFakeInput";
+import useStyles from "hooks/useStyles";
+
+const makeStyles = (theme) =>
+  StyleSheet.create({
+    container: {
+      padding: theme.utils.spacing(2),
+    },
+  });
 
 const FindYourCommunityScreen = () => {
+  const { styles } = useStyles(makeStyles);
+  const [turnOnLocationService, setTurnOnLocationService] = useState(false);
+
+  const onPress = () => {
+    console.log("go to search community");
+  };
+
   return (
-    <Screen statusBarDark>
-      <TurnOnLocationServiceOverlay />
+    <Screen statusBarDark open={turnOnLocationService}>
+      <View style={styles.container}>
+        <SearchInput onPress={onPress} placeholder="Search to add property" />
+      </View>
+
+      <TurnOnLocationServiceOverlay
+        open={turnOnLocationService}
+        close={() => setTurnOnLocationService(false)}
+      />
     </Screen>
   );
 };
