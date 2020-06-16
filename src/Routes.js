@@ -22,7 +22,7 @@ const Stack = createStackNavigator();
 const Routes = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="SearchCommunity">
+      <Stack.Navigator initialRouteName="EnterPhone">
         <Stack.Screen
           name="EnterPhone"
           component={EnterPhoneScreen}
